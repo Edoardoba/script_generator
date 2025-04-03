@@ -14,8 +14,8 @@ st.set_page_config(page_title="Script Generator", layout="centered")
 
 # UI
 st.title("📝 Script Generator App")
-topic = st.text_input("Prompt", placeholder="Write the main topic") #Added Default Value
-title = st.text_input("User Input", placeholder="Write the title of the script")
+topic = st.text_input("Prompt", placeholder="Write the main topic (i.e. Space...)") #Added Default Value
+title = st.text_input("User Input", placeholder="Write the title of the script (i.e. World of Whales)")
 total_word_count = st.text_input("Number of Words")  # Single-line input
 
 selected = st.selectbox("Choose type", ["Space", "Story", "Spirituality"])
@@ -111,5 +111,5 @@ if title!="" and total_word_count !="" and topic !="":
 
 if st.button("Generate Full Text"):
 
-    st.text_area("Full Script", text, height=400)
+    st.text_area("Full Script", "COMING SOON", height=400)
         
