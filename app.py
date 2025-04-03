@@ -40,6 +40,10 @@ if st.button("Generate"):
 
         print("AAA", num_sections, words_per_section)
 
+        title = st.text_input("Script Title", value=str(num_sections))
+
+        title = st.text_input("Script Title", value=str(words_per_section))
+
 
         complete_prompt = f"""
         You are creating a detailed outline for a long-form script of approximately {total_word_count} words on the followin topic:
