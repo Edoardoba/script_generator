@@ -7,7 +7,7 @@ import re
 import math
 
 # Setup OpenAI client
-client = OpenAI(api_key=openai_key )  # Replace with your actual key
+client = OpenAI(api_key=st.secrets["openai_key"] )  # Replace with your actual key
 
 
 # Set page title
