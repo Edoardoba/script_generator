@@ -28,10 +28,13 @@ if st.button("Generate"):
     
         # === INFERRED SECTION COUNT ===
         total_word_count = int(total_word_count)
-        if total_word_count >10000:target_words_per_section = 2000
-        else:target_words_per_section = 3000
+        if total_word_count >10000:target_words_per_section = 3000
+        elif 5000>total_word_count >10000:target_words_per_section = 3000
+        elif 3000>total_word_count >5000:target_words_per_section = 2000
+        elif 1500>total_word_count >3000:target_words_per_section = 1000
+        else:target_words_per_section = 500
         
-        num_sections = max(3, math.ceil(total_word_count / target_words_per_section))  # At least intro, 1 body, 1 conclusion
+        num_sections = max(1, math.ceil(total_word_count / target_words_per_section))  # At least intro, 1 body, 1 conclusion
         
 
         
