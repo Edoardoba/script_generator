@@ -15,8 +15,8 @@ st.set_page_config(page_title="Script Generator", layout="centered")
 
 # UI
 st.title("📝 Script Generator App")
-topic = st.text_input("Prompt", value="Write the main topic") #Added Default Value
-title = st.text_input("User Input", value="Write the title of the script")
+topic = st.text_input("Script Topic", placeholder="Write the main topic") #Added Default Value
+title = st.text_input("Script Title", placeholder="Write the title of the script")
 total_word_count = st.text_input("Number of Words")  # Single-line input
 
 
