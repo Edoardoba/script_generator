@@ -27,7 +27,9 @@ if st.button("Generate"):
     with st.spinner("Generating text..."):
     
         # === INFERRED SECTION COUNT ===
-        target_words_per_section = 3000
+        if total_word_count >10000:target_words_per_section = 2000
+        else:target_words_per_section = 3000
+        
         num_sections = max(3, math.ceil(total_word_count / target_words_per_section))  # At least intro, 1 body, 1 conclusion
         
 
