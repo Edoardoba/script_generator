@@ -41,21 +41,41 @@ if st.button("Generate"):
         complete_prompt = f"""
         You are creating a detailed outline for a long-form script of approximately {total_word_count} words on the followin topic:
         "{topic}""{title}".
-
         Structure:
-        - Section 1: Introduction to the topic (no summary at end)
-        - Section {num_sections}: Final Conclusion (no intro at start)
-        - Sections 2 to {num_sections - 1}: Each should cover a unique and important aspect of the topic.
-        Avoid overlapping content. Ensure smooth transitions between sections.  Total sections to be generated: {num_sections}
+        Section 1: Introduction to the topic (no summary at the end)
+        Section {num_sections}: Final Conclusion (no intro at the start)
+        Sections 2 to {num_sections - 1}: Each section must explore a specific, real, and interesting example or sub-theme related to the main topic.
+        Rules for Sections 2 to {num_sections - 1}:
+        Avoid vague or generic overviews.
         
-        Examples to understand the tone and the style:
-        - The Body Knows Before the Mind Does. 
-        - The Information Paradox: What Happens to Ingested Data?       
-        - Philosophical, Cultural, and Ethical Implications of Black Hole Science. 
-        - The Power of the Soul.
-        - The Veil Between Worlds.
-
-        List each section as a numbered item. Only output the section titles.
+        
+        Prioritize real-world cases, named examples, historic events, cultural artifacts, individual theories, singular discoveries, or concrete scientific anomalies.
+        Only include philosophical, speculative, or thematic ideas if they are tied directly to something specific or real.
+        Each section should sound like it could be the title of a fascinating standalone documentary segment — not a textbook chapter.
+        Avoid repeating the same types of content across different scripts (e.g. “ethical implications” or “cultural perceptions”) unless it’s tailored with unique and specific content.
+        
+        Style Guide:
+        Be bold, specific, and imaginative — but grounded.
+        Think like a curious storyteller, not an academic summarizer.
+        Surprise the audience with lesser-known facts, forgotten history, strange details, or vivid oddities.
+        
+        Output:
+        Provide only the numbered section titles.
+        
+        Do not include summaries, explanations, or intros — just the titles.
+        
+        
+        🔁 Example Use Cases
+        Here’s how this prompt would naturally steer the script in the right direction for different topics:
+        
+        Topic - Example of a Better Section:
+        
+        The Strangest Stars in the Universe should be “PSR J1719–1438b: The Planet Made of Crystallized Diamond”
+        Flat Earth Beliefs Through History should be “The Babylonian World Map: A Flat Earth in Cuneiform”
+        Black Holes in Human Culture should be “The ‘Dark Mouth’ in Navajo Mythology and Cosmic Holes”
+        The Nature of Time should be “Timekeeping on Mars: Why Sols Break Earth’s Clock”
+        
+        Output only the numbered section titles.
         """
 
 
