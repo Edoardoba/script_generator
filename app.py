@@ -62,7 +62,7 @@ if st.button("Generate"):
         - The Power of the Soul.
         - The Veil Between Worlds.
 
-        List each section as a numbered item. Only output the section titles. Total sections to be generated:{num_sections}
+        List each section as a numbered item. Only output the section titles.
         """
 
 
