@@ -35,11 +35,10 @@ if st.button("Generate"):
         else:target_words_per_section = 500
         
         num_sections = max(1, math.ceil(total_word_count / target_words_per_section))  # At least intro, 1 body, 1 conclusion
-        
-
-        
+                
         words_per_section = total_word_count // num_sections
-        
+
+        print("AAA", num_sections, words_per_section)
 
 
         complete_prompt = f"""
