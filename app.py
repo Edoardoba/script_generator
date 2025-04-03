@@ -19,7 +19,7 @@ topic = st.text_input("Prompt", value="Write the main topic") #Added Default Val
 title = st.text_input("User Input", value="Write the title of the script")
 total_word_count = st.text_input("Number of Words")  # Single-line input
 
-total_word_count = int(total_word_count)
+
 
 output_placeholder = st.empty()
 
@@ -27,6 +27,7 @@ if st.button("Generate"):
     with st.spinner("Generating text..."):
     
         # === INFERRED SECTION COUNT ===
+        total_word_count = int(total_word_count)
         if total_word_count >10000:target_words_per_section = 2000
         else:target_words_per_section = 3000
         
