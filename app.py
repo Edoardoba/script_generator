@@ -38,13 +38,6 @@ if st.button("Generate"):
                 
         words_per_section = total_word_count // num_sections
 
-        print("AAA", num_sections, words_per_section)
-
-        title = st.text_input("Script Title", value=str(num_sections))
-
-        title = st.text_input("Script Title", value=str(words_per_section))
-
-
         complete_prompt = f"""
         You are creating a detailed outline for a long-form script of approximately {total_word_count} words on the followin topic:
         "{topic}""{title}".
@@ -53,7 +46,7 @@ if st.button("Generate"):
         - Section 1: Introduction to the topic (no summary at end)
         - Section {num_sections}: Final Conclusion (no intro at start)
         - Sections 2 to {num_sections - 1}: Each should cover a unique and important aspect of the topic.
-        Avoid overlapping content. Ensure smooth transitions between sections.
+        Avoid overlapping content. Ensure smooth transitions between sections.  Total sections to be generated: {num_sections}
         
         Examples to understand the tone and the style:
         - The Body Knows Before the Mind Does. 
