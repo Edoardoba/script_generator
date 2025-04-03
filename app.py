@@ -34,7 +34,7 @@ if st.button("Generate"):
         elif 1500>total_word_count >3000:target_words_per_section = 1000
         else:target_words_per_section = 500
         
-        num_sections = max(1, math.ceil(total_word_count / target_words_per_section))  # At least intro, 1 body, 1 conclusion
+        num_sections = max(3, math.ceil(total_word_count / target_words_per_section))  # At least intro, 1 body, 1 conclusion
                 
         words_per_section = total_word_count // num_sections
 
@@ -62,7 +62,7 @@ if st.button("Generate"):
         - The Power of the Soul.
         - The Veil Between Worlds.
 
-        List each section as a numbered item. Only output the section titles.
+        List each section as a numbered item. Only output the section titles. Total sections to be generated:{num_sections}
         """
 
 
