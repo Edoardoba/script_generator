@@ -33,7 +33,7 @@ if title!="" and total_word_count !="" and topic !="" and selected!="" and words
 
           
 
-    num_sections = int(total_word_count) // int(words_per_section)
+    num_sections = math.ceil(int(total_word_count) / int(words_per_section))
     
     complete_prompt = f"""
     You are creating a detailed outline of {num_sections} sections for a long-form script of approximately {total_word_count} words on the followin topic:
@@ -75,7 +75,6 @@ if title!="" and total_word_count !="" and topic !="" and selected!="" and words
     """
 
 
-    print(complete_prompt)
 
     # === STEP 1: GENERATE OUTLINE ===
     outline_prompt = complete_prompt
