@@ -18,7 +18,7 @@ topic = st.text_input("Prompt", placeholder="Write the main topic (i.e. Space...
 title = st.text_input("User Input", placeholder="Write the title of the script (i.e. World of Whales)")
 total_word_count = st.text_input("Number of Words")  # Single-line input
 
-selected = st.selectbox("Choose type", ["Space", "Story", "Spirituality"])
+selected = st.selectbox("Choose type", ["", "Space", "Story", "Spirituality"])
 
 
 # === INFERRED SECTION COUNT ===
@@ -87,7 +87,7 @@ words_per_section = total_word_count // num_sections
 # === STEP 1: GENERATE OUTLINE ===
 outline_prompt = complete_prompt
 
-if title!="" and total_word_count !="" and topic !="":
+if title!="" and total_word_count !="" and topic !="" and selected!="":
     outline_response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
