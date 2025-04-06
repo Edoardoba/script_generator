@@ -57,7 +57,7 @@ def generate_text(sections, selected_list, base_prompt, word_count):
 
     section_outputs = {}
 
-    for title in sections[0:1]:
+    for title in sections:
 
         prompt = base_prompt.format(title=title, word_count=word_count)
         # Add message to thread
