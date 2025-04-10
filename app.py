@@ -25,6 +25,7 @@ if not st.session_state.authenticated:
 
 spiritual_file_list = ["file-3gbyDxwpb4s7xGttZVBb7s", "file-M4c8arf7KdFLm1Tp33WrV1", "file-J7U58YcwJRif1Smo2P2RgS"]
 space_file_list = ["file-SMa1t9dvuRSPMgmfESmeVR", "file-MApSfBa7y6wY1PVipm1qL3", "file-MVhqAdFiLBAi7beG9kh7gY"]
+story_file_list = ["file-JTF44vJCUNXMQnuY1LYPEM", "file-HQsYc21CHAS3LgjYiRXgHW", "file-MQzDtqd5ivWdD7Ejc7wN7Y"]
 
 base_prompt_space = (
     "Write a section titled '{title}' in approximately {word_count} words, "
@@ -128,10 +129,7 @@ if generate:
     else:
         try:
 
-
-            num_sections = max(1, int(total_word_count) // max(1, int(words_per_section)))
-
-            prompt = f"""
+            space_prompt = f"""
             You are creating a detailed outline of {num_sections} sections for a long-form script of approximately {total_word_count} words on the following topic:
             "{topic} - {title}".
 
@@ -148,6 +146,55 @@ if generate:
 
             Output: Only the numbered section titles. No summaries, intros, or extra info.
             """
+            spiritual_prompt = f"""
+            You are creating a detailed outline of {num_sections} sections for a long-form script of approximately {total_word_count} words on the following topic:
+            "{topic} - {title}".
+
+            Structure:
+            Section 1: Introduction to the topic (no summary at the end)
+            Sections 2 to {num_sections - 1}: Each section must explore a specific, real, and interesting example or sub-theme related to the main topic.
+            Section {num_sections}: Final Conclusion (no intro at the start)
+
+            Prioritize real-world cases, named examples, historic events, cultural artifacts, individual theories, singular discoveries, or concrete scientific anomalies.
+
+            Style Guide:
+            Be bold, specific, and imaginative — but grounded.
+            Think like a curious storyteller, not an academic summarizer.
+
+            Output: Only the numbered section titles. No summaries, intros, or extra info.
+            """
+
+            story_prompt = f"""
+            You are creating a detailed outline of {num_sections} sections for a long-form script of approximately {total_word_count} words on the following topic:
+            "{topic} - {title}".
+
+            Structure:
+            Section 1: Introduction to the topic (no summary at the end)
+            Sections 2 to {num_sections - 1}: Each section must explore a specific, real, and interesting example or sub-theme related to the main topic.
+            Section {num_sections}: Final Conclusion (no intro at the start)
+
+            Prioritize real-world cases, named examples, historic events, cultural artifacts, individual theories, singular discoveries, or concrete scientific anomalies.
+
+            Style Guide:
+            Be bold, specific, and imaginative — but grounded.
+            Think like a curious storyteller, not an academic summarizer.
+
+            Output: Only the numbered section titles. No summaries, intros, or extra info.
+            """
+
+            if selected =="Space": 
+                prompt = space_prompt
+            elif selected =="Spiritual": 
+                prompt = spiritual_prompt
+            elif selected =="Story": 
+                prompt = story_prompt
+            else: 
+                selected_list = spiritual_file_list
+                base_prompt = base_prompt_space
+
+            num_sections = max(1, int(total_word_count) // max(1, int(words_per_section)))
+
+            
 
             with st.spinner("Generating outline..."):
                 response = client.chat.completions.create(
