@@ -128,6 +128,7 @@ if generate:
         st.warning("Please fill out all fields.")
     else:
         try:
+            num_sections = max(1, int(total_word_count) // max(1, int(words_per_section)))
 
             space_prompt = f"""
             You are creating a detailed outline of {num_sections} sections for a long-form script of approximately {total_word_count} words on the following topic:
@@ -192,8 +193,7 @@ if generate:
                 selected_list = spiritual_file_list
                 base_prompt = base_prompt_space
 
-            num_sections = max(1, int(total_word_count) // max(1, int(words_per_section)))
-
+            
             
 
             with st.spinner("Generating outline..."):
