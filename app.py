@@ -83,7 +83,7 @@ def generate_text(sections, selected_list, base_prompt, word_count):
             )
             if run_status.status == "completed":
                 messages = list(client.beta.threads.messages.list(thread_id=thread.id))
-                for msg in messages:  # Start from most recent
+                for msg in messages[::-1]:  # Start from most recent
                     if msg.role == "assistant":
                         section_outputs[title] = msg.content[0].text.value
                         check = False
