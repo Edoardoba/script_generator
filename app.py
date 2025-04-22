@@ -190,8 +190,7 @@ if generate:
             elif selected =="Story": 
                 prompt = story_prompt
             else: 
-                selected_list = spiritual_file_list
-                base_prompt = base_prompt_space
+                prompt = story_prompt
 
             
             
