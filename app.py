@@ -96,6 +96,28 @@ def generate_text(sections, selected_list, base_prompt, word_count):
 
     return section_outputs
 
+def generate_text1(sections, base_prompt, word_count):
+    section_outputs = {}
+
+    for title in sections:
+        prompt = base_prompt.format(title=title, word_count=word_count)
+
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant that writes long, structured outlines."},
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            content = response.choices[0].message.content.strip()
+            section_outputs[title] = content
+            print(f"✅ Completed section: {title}")
+        except Exception as e:
+            print(f"❌ Error generating section '{title}': {str(e)}")
+            section_outputs[title] = f"Error: {str(e)}"
+
+    return section_outputs
 
 
 # --- API Setup ---
@@ -120,11 +142,12 @@ with st.form(key="input_form"):
     total_word_count = st.text_input("Total Number of Words", placeholder="e.g., 1200")
     words_per_section = st.text_input("Words per Section", placeholder="e.g., 200")
     selected = st.selectbox("Choose a Type", [ "Space", "Story", "Spirituality"])
+    selected_assistant = st.selectbox("Choose a request type ", [ "", "Assistant", "API"])
     generate = st.form_submit_button("Generate Sections")
 
 # --- First Generation ---
 if generate:
-    if not all([topic, title, total_word_count, words_per_section, selected]):
+    if not all([topic, title, total_word_count, words_per_section, selected, selected_assistant]):
         st.warning("Please fill out all fields.")
     else:
         try:
@@ -238,7 +261,8 @@ if st.session_state.generated_text:
     if st.button("Continue"):
         sections = st.session_state.sections
         with st.spinner("Generating sections..."):
-            generated_text = generate_text(sections, selected_list, base_prompt, words_per_section)
+            if selected_assistant == "Assistant":generated_text = generate_text(sections, selected_list, base_prompt, words_per_section)
+            else:generated_text = generate_text1(sections, selected_list, base_prompt, words_per_section)
             output = ""
             for key in generated_text.keys():
                 output += key + "\n" + generated_text[key] + "\n"
