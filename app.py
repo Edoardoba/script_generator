@@ -262,7 +262,7 @@ if st.session_state.generated_text:
         sections = st.session_state.sections
         with st.spinner("Generating sections..."):
             if selected_assistant == "Assistant":generated_text = generate_text(sections, selected_list, base_prompt, words_per_section)
-            else:generated_text = generate_text1(sections, selected_list, base_prompt, words_per_section)
+            else:generated_text = generate_text1(sections, base_prompt, words_per_section)
             output = ""
             for key in generated_text.keys():
                 output += key + "\n" + generated_text[key] + "\n"
